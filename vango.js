@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api') ;
-const TOKEN ='645179381:AAGVryDn-_Peq5GkNT1kvh0wkvwQFfB_2lA';
+const TOKEN ='';
 let pools = require('./strings.js');
 let ansvers = require('./ansvers.js');
 const my_id = 381624708;
