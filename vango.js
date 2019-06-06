@@ -29,8 +29,11 @@ if (new_date <=80) {
 	
 }else{
 
-	if (msg.from.first_name === 'Roman') {
-		bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + 'Віталік' + ansvers_v[randomInteger(1,20)]);
+	if (msg.from.first_name === 'Roman'||msg.from.first_name =='Виталік') {
+		bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers_v[randomInteger(1,20)]);
+		bot.sendMessage(msg.chat.id,  '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+		+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+
 		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Спрацювало на віталіка');
 		
 	}else{
