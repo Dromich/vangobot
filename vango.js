@@ -2,6 +2,7 @@ const TelegramBot = require('node-telegram-bot-api') ;
 const TOKEN =require('./tok.js');;
 let pools = require('./strings.js');
 let ansvers = require('./ansvers.js');
+let ansvers_v= require('./ans_vit.js');
 const my_id = 381624708;
 const bot = new TelegramBot(TOKEN,{
 	polling: true
@@ -29,7 +30,7 @@ if (new_date <=80) {
 }else{
 
 	if (msg.from.first_name === 'Roman') {
-		bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + 'Віталік' + '');
+		bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + 'Віталік' + ansvers_v[randomInteger(1,20)]);
 		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Спрацювало на віталіка');
 		
 	}else{
