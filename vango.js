@@ -23,21 +23,22 @@ var new_date=msg.date - old_date;
 
 if (new_date <=80) {
 
-if (msg.from.first_name === 'Roman') {
-	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + 'роман це ти');
-}else{
-	console.log
 	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers[randomInteger(1,20)]);
-	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Не терплячий');
-}
-
-	
+		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Не терплячий');	
 	
 }else{
-	bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
 
-	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Use Vangobot');
+	if (msg.from.first_name === 'Roman') {
+		bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + 'роман це ти');
+	}else{
+		console.log(msg.from.first_name)
+		bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+		+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+	
+		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Use Vangobot');
+	}
+
+	
 	
 };
 
