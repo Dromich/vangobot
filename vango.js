@@ -1,5 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api') ;
-const TOKEN ='';
+const TOKEN =require('./tok.js');;
 let pools = require('./strings.js');
 let ansvers = require('./ansvers.js');
 const my_id = 381624708;
@@ -22,7 +22,16 @@ var old_date =user_time[msg.chat.id];
 var new_date=msg.date - old_date;
 
 if (new_date <=80) {
+
+if (msg.from.first_name === 'Roman') {
+	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + 'роман це ти');
+}else{
+	console.log
 	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers[randomInteger(1,20)]);
+	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Не терплячий');
+}
+
+	
 	
 }else{
 	bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
@@ -35,7 +44,7 @@ if (new_date <=80) {
 user_time[msg.chat.id]=msg.date;
 
 //console.log(msg);
-console.log(user_time);
-console.log(new_date);
+// console.log(user_time);
+// console.log(new_date);
 
 });
