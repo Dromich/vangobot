@@ -28,21 +28,45 @@ if (new_date <=80) {
 		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Не терплячий');	
 	
 }else{
-
-	if (msg.from.first_name === 'Roman'||msg.from.first_name =='Виталік') {
-		bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers_v[randomInteger(1,20)]);
-		bot.sendMessage(msg.chat.id,  '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-		+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
-
-		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Спрацювало на віталіка');
-		
-	}else{
-		
-		bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-		+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+	bot.sendMessage(id,'Яке ви хочете передбачення',{
+		reply_markup:{
+			inline_keyboard:[
+				[
+					{
+						text:'Звичайне',
+						callback_data:'simp'
+				
+					},
+					{
+						text:"Про любов 💕",
+						callback_data:"love"
+					}
+				]
+			]
+			
+		}
 	
-		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Use Vangobot');
-	}
+	})
+
+
+
+
+
+
+	// if (msg.from.first_name === 'Roman'||msg.from.first_name =='Виталік') {
+	// 	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers_v[randomInteger(1,20)]);
+	// 	bot.sendMessage(msg.chat.id,  '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+	// 	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+
+	// 	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Спрацювало на віталіка');
+		
+	// }else{
+		
+	// 	bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+	// 	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+	
+	// 	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Use Vangobot');
+	// }
 
 	
 	
@@ -55,3 +79,25 @@ user_time[msg.chat.id]=msg.date;
 // console.log(new_date);
 
 });
+
+
+
+bot.on('callback_query',query =>{
+	//bot.sendMessage(query.message.chat.id,helps.debug(query))
+
+if (query.data === 'love') {
+	bot.sendPhoto(query.message.chat.id, './love_is/love_is_01.jpg')
+
+	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Використав любовне передбачення');
+	
+}else{
+	bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+		+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+
+	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Використав звичайне передбачення');
+}
+
+
+	//bot.answerCallbackQuery(query.id,`${query.data}`)
+
+})
