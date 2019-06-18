@@ -14,105 +14,77 @@ function randomInteger(min, max) {
     return rand;
   };
 
-var user_time =[];
 
 
 bot.on('message', (msg) =>{
 
-var old_date =user_time[msg.chat.id];
-var new_date=msg.date - old_date;
-
-if (new_date <=80) {
-
-	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers[randomInteger(1,20)]);
-		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Не терплячий');	
-	
-}else{
-	bot.sendMessage(msg.chat.id,'Яке ви хочете передбачення',{
-		reply_markup:{
-			inline_keyboard:[
-				[
-					{
-						text:'Звичайне',
-						callback_data:'simp'
-				
-					},
-					{
-						text:"Про любов 💕",
-						callback_data:"love"
-					}
-				]
-			]
+bot.sendMessage(msg.chat.id,'Яке ви хочете передбачення',{
+	reply_markup:{
+		inline_keyboard:[
+			[
+				{
+					text:'Звичайне',
+					callback_data:'simp'
 			
-		}
-	
-	})
-
-
-
-
-
-
-	// if (msg.from.first_name === 'Roman'||msg.from.first_name =='Виталік') {
-	// 	bot.sendMessage(msg.chat.id, msg.from.first_name + ', ' + ansvers_v[randomInteger(1,20)]);
-	// 	bot.sendMessage(msg.chat.id,  '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-	// 	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
-
-	// 	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Спрацювало на віталіка');
+				},
+				{
+					text:"Про любов 💕",
+					callback_data:"love"
+				}
+			]
+		]
 		
-	// }else{
-		
-	// 	bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-	// 	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
-	
-	// 	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Use Vangobot');
-	// }
+	}
 
+})//bot send mesage and keyboard
 	
-	
-};
 
-user_time[msg.chat.id]=msg.date;
-
-//console.log(msg);
-// console.log(user_time);
-// console.log(new_date);
 
 });
 
 
 
 bot.on('callback_query',query =>{
-	//bot.sendMessage(query.message.chat.id,helps.debug(query))
+	let counter = 0
 
-if (query.data === 'love') {
-	bot.sendPhoto(query.message.chat.id, './love_is/love_is_01.jpg')
-
-	bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав любовне передбачення');
-	
-}else{
-
-	if (new_date <=80) {
-
-		bot.sendMessage(query.message.chat.id, query.message.chat.username + ', ' + ansvers[randomInteger(1,20)]);
-		bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Не терплячий');	
-
+	if (query.data === 'love') {
+		counter = counter + 1
+			bot.sendPhoto(query.message.chat.id, './love_is/love_is_'+ randomInteger(1,47) +'.jpg')
 		
-}else{
-
-	bot.sendMessage(query.message.chat.id, query.message.chat.username  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
-
-bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав звичайне передбачення');
-
-}
+			bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав любовне передбачення');
 	
+	
+			
+		}else{
+			counter = counter + 1
+			bot.sendMessage(query.message.chat.id, query.message.chat.username  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+			+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+		
+		bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав звичайне передбачення');
+		
+				
+		}
 
-}
+
 
 	
+  
+
+// if (counter === 1) {
+
+// 	bot.sendMessage(query.message.chat.id, query.message.chat.username + ', ' + ansvers[randomInteger(1,20)]);
+// 	bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Не терплячий');
+
+// }else{
+	
+// }
+
+ 
+
+
 
 
 	//bot.answerCallbackQuery(query.id,`${query.data}`)
 
 })
+
