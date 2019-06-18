@@ -23,7 +23,7 @@ bot.sendMessage(msg.chat.id,'Яке ви хочете передбачення',
 		inline_keyboard:[
 			[
 				{
-					text:'Звичайне',
+					text:'Звичайне 🎱',
 					callback_data:'simp'
 			
 				},
@@ -49,18 +49,19 @@ bot.on('callback_query',query =>{
 
 	if (query.data === 'love') {
 		counter = counter + 1
-			bot.sendPhoto(query.message.chat.id, './love_is/love_is_'+ randomInteger(1,47) +'.jpg')
+			bot.sendPhoto(query.message.chat.id, './love_is/love_is_'+ randomInteger(1,47) +'.jpg',{
+				caption:`${query.message.chat.first_name}, Любов це ...`
+			})
 		
-			bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав любовне передбачення');
+			bot.sendMessage(my_id, query.message.chat.first_name  + '\n' + 'Використав любовне передбачення');
 	
 	
 			
 		}else{
 			counter = counter + 1
-			bot.sendMessage(query.message.chat.id, query.message.chat.username  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-			+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+			bot.sendMessage(query.message.chat.id, query.message.chat.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)]);
 		
-		bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав звичайне передбачення');
+		bot.sendMessage(my_id, query.message.chat.first_name  + '\n' + 'Використав звичайне передбачення');
 		
 				
 		}
