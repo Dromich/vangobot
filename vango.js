@@ -28,7 +28,7 @@ if (new_date <=80) {
 		bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Не терплячий');	
 	
 }else{
-	bot.sendMessage(id,'Яке ви хочете передбачення',{
+	bot.sendMessage(msg.chat.id,'Яке ви хочете передбачення',{
 		reply_markup:{
 			inline_keyboard:[
 				[
@@ -88,14 +88,29 @@ bot.on('callback_query',query =>{
 if (query.data === 'love') {
 	bot.sendPhoto(query.message.chat.id, './love_is/love_is_01.jpg')
 
-	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Використав любовне передбачення');
+	bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав любовне передбачення');
 	
 }else{
-	bot.sendMessage(msg.chat.id, msg.from.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
-		+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
 
-	bot.sendMessage(my_id, msg.from.first_name  + '\n' + 'Використав звичайне передбачення');
+	if (new_date <=80) {
+
+		bot.sendMessage(query.message.chat.id, query.message.chat.username + ', ' + ansvers[randomInteger(1,20)]);
+		bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Не терплячий');	
+
+		
+}else{
+
+	bot.sendMessage(query.message.chat.id, query.message.chat.username  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)] 
+	+'\n \n' + "Для наступного передбачення зачекайте хочаб хвилинку та надішліть +\n\n\n" );
+
+bot.sendMessage(my_id, query.message.chat.username  + '\n' + 'Використав звичайне передбачення');
+
 }
+	
+
+}
+
+	
 
 
 	//bot.answerCallbackQuery(query.id,`${query.data}`)
