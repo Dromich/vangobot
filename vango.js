@@ -54,7 +54,9 @@ bot.on('callback_query',query =>{
 			})
 		
 			bot.sendMessage(my_id, query.message.chat.first_name  + '\n' + 'Використав любовне передбачення');
-	
+
+			bot.answerCallbackQuery(query.id,`Готово`)
+
 	
 			
 		}else{
@@ -62,6 +64,8 @@ bot.on('callback_query',query =>{
 			bot.sendMessage(query.message.chat.id, query.message.chat.first_name  + '\n'+'Передбачення для вас:\n' + pools[randomInteger(1,91)]);
 		
 		bot.sendMessage(my_id, query.message.chat.first_name  + '\n' + 'Використав звичайне передбачення');
+
+		bot.answerCallbackQuery(query.id,`Готово`)
 		
 				
 		}
